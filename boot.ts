@@ -6,6 +6,7 @@ import {
   WebServerConfig,
   Documentation
 } from '@bitbeat/web';
+
 export default async () => {
   const webConfig = new WebServerConfig();
 
@@ -20,7 +21,8 @@ export default async () => {
 
   // this will overwrite the useVersioning property
   // by default this is false to enable access in browser by using e.g. http://127.0.0.1:8080/api/v1/myAction
-  // now you can access it via http://127.0.0.1:8080/api/myAction and add the version in the header
+  // now you can access it via http://127.0.0.1:8080/api/myAction and add the version in the header like 'Accept-Version': '1.x'
+  // for more details see fastify versioning
   webConfig.default.useHeaderVersioning = true;
 
   await registerBulk(
@@ -29,7 +31,7 @@ export default async () => {
       },
       {
         instance: WebServer,
-        createInstance: true,
+        createInstance: true
       },
       {
         instance: Documentation,
