@@ -5,8 +5,8 @@ export default class Auth extends WebActionMiddleware {
         super();
     }
 
-    async beforeRun(data: { action: WebAction; result: any; raw: any }): Promise<void> {
-        console.log('Hey I will run before your action!', data.action);
+    async beforeRun({ action }: { action: WebAction }): Promise<void> {
+        console.log('Hey I will run before your action!', action);
         throw new Error('Hey I will crash!');
     }
 }
