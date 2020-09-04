@@ -6,9 +6,12 @@ import {
   WebServerConfig,
   Documentation
 } from '@bitbeat/web';
+import fastifyStatic from 'fastify-static';
+import { join } from 'path';
 
 export default async () => {
   const webConfig = new WebServerConfig();
+  const webServer = new WebServer();
 
   // enable the full logs for each request
   webConfig.default.options.disableRequestLogging = false;
@@ -25,13 +28,25 @@ export default async () => {
   // for more details see fastify versioning
   webConfig.default.useHeaderVersioning = true;
 
+  // TODO: next release will fix this any error
+  // add your config
+  (webConfig.default as any).static = {
+      root: join(__dirname, 'public'),
+  };
+
+  // TODO: next release will fix this any error
+  // add some of your fastify packages after the default => also possible before
+  (webServer as any).postRegister = (runtime: any, config: WebServerConfig | undefined): void => {
+      runtime.register(fastifyStatic, config?.value.static);
+      webServer.debug(`Registered fastify static.`);
+  };
+
   await registerBulk(
     new Set([{
         instance: webConfig,
       },
       {
-        instance: WebServer,
-        createInstance: true
+        instance: webServer,
       },
       {
         instance: Documentation,

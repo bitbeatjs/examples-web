@@ -11,11 +11,13 @@
   "license": "MIT",
   "dependencies": {
     "@bitbeat/core": "^0.0.10",
-    "@bitbeat/web": "^0.0.10"
+    "@bitbeat/web": "^0.0.11",
+    "fastify-static": "^3.2.0"
   },
   "devDependencies": {
     "@types/debug": "4.1.5",
-    "@types/node": "14.6.3",
+    "@types/fastify-static": "^2.2.1",
+    "@types/node": "14.6.4",
     "@types/node-cron": "2.0.3",
     "@types/pino": "6.3.0",
     "@typescript-eslint/eslint-plugin": "4.0.1",
