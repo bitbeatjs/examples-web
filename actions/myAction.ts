@@ -1,4 +1,5 @@
 import { WebAction } from '@bitbeat/web';
+import Auth from '../middlewares/auth';
 
 export default class MyAction extends WebAction {
     constructor() {
@@ -9,6 +10,9 @@ export default class MyAction extends WebAction {
 
         // only allow get methods
         this.methods = ['GET'];
+
+        // add a basic middleware
+        this.middlewares = new Set([Auth]) as any;
     }
 
     // run a console log on calling of the function
