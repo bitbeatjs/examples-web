@@ -14,7 +14,7 @@ export default async () => {
   const webServer = new WebServer();
 
   // enable the full logs for each request
-  webConfig.default.options.disableRequestLogging = false;
+  (webConfig.default.options as any).disableRequestLogging = false;
 
   // this should be always turned on to enable any versioning of your actions
   webConfig.default.useVersioning = true;
@@ -42,16 +42,10 @@ export default async () => {
   };
 
   await registerBulk(
-    new Set([{
-        instance: webConfig,
-      },
-      {
-        instance: webServer,
-      },
-      {
-        instance: Documentation,
-        createInstance: true,
-      }
+    new Set([
+        webConfig,
+        webServer,
+        Documentation
     ])
   );
 };
