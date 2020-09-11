@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "description": "An example project for @bitbeat/core and @bitbeat/web.",
   "scripts": {
-    "start": "node ./node_modules/@bitbeat/core/bin/index.js",
+    "start": "npx @bitbeat/core start",
     "build": "npx tsc",
     "watch": "npx tsc --watch",
-    "dev": "npx ndb ./node_modules/@bitbeat/core/bin/index.js"
+    "dev": "ndb npm run start"
   },
   "license": "MIT",
   "dependencies": {
