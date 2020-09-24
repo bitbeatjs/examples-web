@@ -11,7 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "@bitbeat/core": "^0.0.17",
-    "@bitbeat/web": "^0.0.14",
+    "@bitbeat/web": "^0.0.16",
     "fastify-static": "^3.2.0"
   },
   "devDependencies": {
